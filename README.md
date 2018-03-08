@@ -43,7 +43,7 @@ First, let's 'tag' the image. Basically give it a 'label' which identifies a ver
 docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.0
 ```
 
-Let us now push the docker image to Docker Hub (you need to login first)
+Let us now push the docker image to [Docker Hub](https://hub.docker.com) (you need to login first)
 
 ```bash
 docker login
@@ -60,9 +60,9 @@ And, on your Docker repository, you can see the image for re-use. Don't forget t
 
 ***
 
-## Pulling the image from Dockerhub
+## Pull MkDocs image from Docker hub
 
-Now we have sorted out everything, we have our brand new image on Docker Hub. If you want to skip all the above, you can simply use our image to get started. Time to Pull the image.
+Now we have sorted out everything, we have our brand new image on [Docker Hub](https://hub.docker.com). If you want to skip all the above, you can simply use our image to get started. Time to Pull the image.
 
 ```bash
 docker pull raspberryvalley/mkdocs:1.0
@@ -70,7 +70,7 @@ docker pull raspberryvalley/mkdocs:1.0
 
 After a bit of downloading, you will be ready to create your own sites.
 
-## Starting a new project
+## Starting a new MkDocs project
 
 You might need to start a new project using the MkDocs inbuilt features. It really is trivial and not always needed. But just in case, this is how you start one in the current directory.
 
@@ -78,7 +78,7 @@ You might need to start a new project using the MkDocs inbuilt features. It real
 docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.0 new .
 ```
 
-## Serving a project
+## Serving an MkDocs project
 
 The current project directory will be served and can be tested in your browser
 
@@ -86,12 +86,12 @@ The current project directory will be served and can be tested in your browser
 docker run -it -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.0 serve -a 0.0.0.0:8000
 ```
 
-## Building a project
+## Building an MkDocs project
 
 To generate a static site using the docker image, run
 
 ```bash
-docker run -it -v $(pwd):/mysite mkdocs build
+docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.0 build
 ```
 
 **Notes**:
@@ -100,13 +100,13 @@ docker run -it -v $(pwd):/mysite mkdocs build
 * **$(pwd)** expands the current directory. There are issues in Windows doing this. In such a case, expand to the full path in the command-line. It can be of interest, that if you use this expansion inside a PowerShell script, it will work.
 
 ```bash
-docker run -it -v c:\somedirectory\somesite:/mysite mkdocs build
+docker run -it -v c:\somedirectory\somesite:/mysite raspberryvalley/mkdocs:1.0 build
 ```
 
 or
 
 ```bash
-docker run -it -v /c/somedirectory/somesite:/mysite mkdocs build
+docker run -it -v /c/somedirectory/somesite:/mysite raspberryvalley/mkdocs:1.0 build
 ```
 
 * It's a good idea to remove the container immediately after it was used. Use the switch **--rm** to achieve this
@@ -208,6 +208,7 @@ The output is as follows.
 
 And related to this article:
 
+* [Docker Hub](https://hub.docker.com)
 * [Alpine](https://hub.docker.com/_/alpine/)
 * [3 biggest wins when using Alpine as a base image](https://diveintodocker.com/blog/the-3-biggest-wins-when-using-alpine-as-a-base-docker-image)
 * [MkDocs](http://www.mkdocs.org/)
