@@ -4,11 +4,13 @@ We write a lot at the [Raspberry Valley](https://raspberry-valley.azurewebsites.
 
 This is our Docker Image for running [MkDocs](http://www.mkdocs.org/). It is based on [Alpine](https://hub.docker.com/_/alpine/), a minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size. We were inspired by [elamperti](https://hub.docker.com/r/elamperti/docker-mkdocs/) and his MKDocks image.
 
-Our Dockerfile and instructions are is available at GitHub
+Our Dockerfile and instructions are is available at [GitHub](https://github.com/raspberryvalley/docker-mkdocs)
 
 ## Introduction
 
 This documentation describes the creation and usage of the *MkDocs* image. On top we provide a few *PowerShell* scripts to simplify day-to-day authoring of content.
+
+> If you don't want to roll your own, but start using the image, jump to the section **Pulling the image from Dockerhub** below.
 
 To learn more about setting up your project in *MkDocs* and working with the tool, see the [MkDocs Getting Started](http://www.mkdocs.org/#getting-started) manual.
 
@@ -52,9 +54,37 @@ You should see something similar to this:
 
 ![mkdocs push](img/mkdocs-push.jpg)
 
-And, on your Docker repository, you can see the image for re-use. Don't forget to edit the title and the description 
+And, on your Docker repository, you can see the image for re-use. Don't forget to edit the title and the description
 
 ![mkdocs on Docker Hub](img/mkdocs-dockerhub.jpg)
+
+***
+
+## Pulling the image from Dockerhub
+
+Now we have sorted out everything, we have our brand new image on Docker Hub. If you want to skip all the above, you can simply use our image to get started. Time to Pull the image.
+
+```bash
+docker pull raspberryvalley/mkdocs:1.0
+```
+
+After a bit of downloading, you will be ready to create your own sites.
+
+## Starting a new project
+
+You might need to start a new project using the MkDocs inbuilt features. It really is trivial and not always needed. But just in case, this is how you start one in the current directory.
+
+```bash
+docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.0 new .
+```
+
+## Serving a project
+
+The current project directory will be served and can be tested in your browser
+
+```bash
+docker run -it -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.0 serve -a 0.0.0.0:8000
+```
 
 ## Building a project
 
@@ -67,7 +97,7 @@ docker run -it -v $(pwd):/mysite mkdocs build
 **Notes**:
 
 * We assume you are in a directory where a valid MkDocs site is
-* **$(pwd)** expands the current directory. There are issues in Windows doing this. In such a case, expand to the full path in the command-line
+* **$(pwd)** expands the current directory. There are issues in Windows doing this. In such a case, expand to the full path in the command-line. It can be of interest, that if you use this expansion inside a PowerShell script, it will work.
 
 ```bash
 docker run -it -v c:\somedirectory\somesite:/mysite mkdocs build
@@ -80,22 +110,6 @@ docker run -it -v /c/somedirectory/somesite:/mysite mkdocs build
 ```
 
 * It's a good idea to remove the container immediately after it was used. Use the switch **--rm** to achieve this
-
-## Serving a project
-
-The current project directory will be served and can be tested in your browser
-
-```bash
-docker run -it -v $(pwd):/mysite -p 8000:8000 mkdocs serve -a 0.0.0.0:8000
-```
-
-## Starting a new project
-
-You might need to start a new project using the MkDocs inbuilt features. It really is trivial and not always needed. But just in case, this is how you start one in the current directory.
-
-```bash
-docker run -it -v $(pwd):/mysite mkdocs new .
-```
 
 ## Powershell Scripts
 
@@ -187,6 +201,7 @@ The output is as follows.
 
 ## Links
 
+* [GitHub home](https://github.com/raspberryvalley/docker-mkdocs)
 * [Raspberry Valley MkDocs image on Docker Hub](https://hub.docker.com/r/raspberryvalley/mkdocs/)
 * [Raspberry Valley makerspace pages](https://raspberry-valley.azurewebsites.net)
 * [Visit us on Twitter](https://twitter.com/RaspberryValley)
@@ -196,4 +211,3 @@ And related to this article:
 * [Alpine](https://hub.docker.com/_/alpine/)
 * [3 biggest wins when using Alpine as a base image](https://diveintodocker.com/blog/the-3-biggest-wins-when-using-alpine-as-a-base-docker-image)
 * [MkDocs](http://www.mkdocs.org/)
-
