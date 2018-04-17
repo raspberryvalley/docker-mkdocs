@@ -1,5 +1,7 @@
 # RaspberryValley MkDocks Docker Image
 
+We are a maker community in Karlskrona, Sweden. See our site for other ideas and activities: [Raspberry Valley](https://raspberry-valley.azurewebsites.net).
+
 We write a lot at the [Raspberry Valley](https://raspberry-valley.azurewebsites.net) makerspace. To share our tools without the hassle of installation, we reverted recently to Docker deployments, both for techies and authors.
 
 This is our Docker Image for running [MkDocs](http://www.mkdocs.org/). It is based on [Alpine](https://hub.docker.com/_/alpine/), a minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size. We were inspired by [elamperti](https://hub.docker.com/r/elamperti/docker-mkdocs/) and his MKDocks image.
@@ -211,8 +213,6 @@ The output is as follows.
 
 * [GitHub home](https://github.com/raspberryvalley/docker-mkdocs)
 * [Raspberry Valley MkDocs image on Docker Hub](https://hub.docker.com/r/raspberryvalley/mkdocs/)
-* [Raspberry Valley makerspace pages](https://raspberry-valley.azurewebsites.net)
-* [Visit us on Twitter](https://twitter.com/RaspberryValley)
 
 And related to this article:
 
@@ -220,3 +220,10 @@ And related to this article:
 * [Alpine](https://hub.docker.com/_/alpine/)
 * [3 biggest wins when using Alpine as a base image](https://diveintodocker.com/blog/the-3-biggest-wins-when-using-alpine-as-a-base-docker-image)
 * [MkDocs](http://www.mkdocs.org/)
+
+Raspberry Valley makerspace links
+
+* [Raspberry Valley](https://raspberry-valley.azurewebsites.net) - Other things we make and do
+* [Raspberry Valley on Twitter](https://twitter.com/RaspberryValley)
+* [Raspberry Valley on Github](https://github.com/raspberryvalley)
+* [Raspberry Valley Docker Hub Images](hub.docker.com/r/raspberryvalley/)
