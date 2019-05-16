@@ -209,6 +209,20 @@ The output is as follows.
 
 ![powershell script mkdocsbuild](img/script-mkdocsbuild.jpg)
 
+## Known Issues
+
+This section is a list of fixes for known issues. We searched for a solution, so you don't have to.
+
+### Error Starting userland Proxy
+
+Recently we are getting this error on some configurations:
+
+```bash
+ Error response from daemon: driver failed programming external connectivity on endpoint tender_cocks (5678ab713xy7a2d97eb3b746352b8az2312341bcda8be3d58ea6959uytb): Error starting userland proxy: mkdir /port/tcp:0.0.0.0:8000:tcp:128.11.0.1:8000: input/output error.
+```
+
+It turns out that you probably have 'Fast Startup Mode' on your Windows 10 which can conflict with Docker. All you have to do is restart Docker. A good explanation of the issue can be found [here](https://coding-stream-of-consciousness.com/2018/11/16/docker-windows-error-starting-userland-proxy/)
+
 ## Links
 
 * [GitHub home](https://github.com/raspberryvalley/docker-mkdocs)
