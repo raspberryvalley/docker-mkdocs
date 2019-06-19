@@ -6,7 +6,7 @@ We write a lot at the [Raspberry Valley](https://raspberry-valley.azurewebsites.
 
 This is our Docker Image for running [MkDocs](http://www.mkdocs.org/). It is based on [Alpine](https://hub.docker.com/_/alpine/), a minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size. We were inspired by [elamperti](https://hub.docker.com/r/elamperti/docker-mkdocs/) and his MKDocks image.
 
-Our Dockerfile and instructions are is available at [GitHub](https://github.com/raspberryvalley/docker-mkdocs)
+Our Dockerfile and instructions are is available at [GitHub](https://github.com/raspberryvalley/docker-mkdocs). Read detailed release notes in our [ChangeLog](changelog.md) document.
 
 ## About
 
@@ -50,14 +50,14 @@ We can push our image to [Docker Hub](https://hub.docker.com). We assume here yo
 First, let's 'tag' the image. Basically give it a 'label' which identifies a version of the system, target platform etc.
 
 ```bash
-docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.0
+docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.0.1
 ```
 
 Let us now push the docker image to [Docker Hub](https://hub.docker.com) (you need to login first)
 
 ```bash
 docker login
-docker push raspberryvalley/mkdocs:1.0
+docker push raspberryvalley/mkdocs:1.0.1
 ```
 
 You should see something similar to this:
@@ -133,12 +133,11 @@ To create a new website in mkdocs, simply use the script below. The name in the 
 
 ```powershell
 # Script to create a new mkdocs repository using our Docker image
-# Petr Hutar (petr.hutar@dynapac.com)
 
-Write-Host 
+Write-Host
 "Create new mkdocs site
 =======================
-This script creates a new mkdocs site using the raspberryvalley/mkdocs image
+This script creates a new mkdocs site using the raspberryvalley/mkdocs image (version 1.0.1)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
@@ -146,7 +145,7 @@ Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
 "
 
 # docker run -it -v $(pwd):/mysite mkdocs new .
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.0 new ."
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.0.1 new ."
 Write-Output $command
 iex $command
 ```
@@ -165,7 +164,7 @@ To serve an existing site you your local machine, yuu can use the powershell scr
 Write-Host
 "Serve mkdocs site (from current directory)
 ===========================================
-This script serves an mkdocs site using the raspberryvalley/mkdocs image
+This script serves an mkdocs site using the raspberryvalley/mkdocs image (version 1.0.1)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
@@ -174,7 +173,7 @@ Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
 
 # docker run -it --rm -v $(pwd):/mysite -p 8000:8000 mkdocs serve -a 0.0.0.0:8000
 
-$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.0 serve -a 0.0.0.0:8000"
+$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.0.1 serve -a 0.0.0.0:8000"
 Write-Output $command
 iex $command
 ```
@@ -193,14 +192,14 @@ Time to build an existing mkdocs site. You can use our script **mkdocsbuild.ps1*
 Write-Host
 "Build mkdocs site (from current directory)
 ===========================================
-This script builds an mkdocs site using the raspberryvalley/mkdocs image
+This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.0.1)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
 Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
 "
 
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.0 build"
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.0.1 build"
 Write-Output $command
 iex $command
 ```
