@@ -26,6 +26,10 @@ To learn more about setting up your project in *MkDocs* and working with the too
 
 > Please note: We always assume that you run all commands from the directory where your *MkDocs* site is, or will be. You can easily confirm you are in the right directory if you see the Yaml file.
 
+---
+
+Once you have setup your MkDocs/Docker environment, as described here, you might want to take the next step and automate your site deployment. If it's Azure you are targeting, you're in luck; we have a solution and guide for [Deployment of MkDocs to Azure](https://github.com/raspberryvalley/deploy-mkdocs-to-azure)
+
 ## Building the image
 
 First, let us prepare our image.
