@@ -1,7 +1,5 @@
 # RaspberryValley MkDocks Docker Image
 
-We are a maker community in Karlskrona, Sweden. See our site for other ideas and activities: [Raspberry Valley](https://raspberry-valley.azurewebsites.net).
-
 We write a lot at the [Raspberry Valley](https://raspberry-valley.azurewebsites.net) makerspace. To share our tools without the hassle of installation, we reverted recently to Docker deployments, both for techies and authors.
 
 This is our Docker Image for running [MkDocs](http://www.mkdocs.org/). It is based on [Alpine](https://hub.docker.com/_/alpine/), a minimal Docker image based on Alpine Linux with a complete package index and only 5 MB in size. We were inspired by [elamperti](https://hub.docker.com/r/elamperti/docker-mkdocs/) and his MKDocks image.
