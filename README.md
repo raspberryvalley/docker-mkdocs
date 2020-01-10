@@ -6,6 +6,12 @@ This is our Docker Image for running [MkDocs](http://www.mkdocs.org/). It is bas
 
 Our Dockerfile and instructions are is available at [GitHub](https://github.com/raspberryvalley/docker-mkdocs). Read detailed release notes in our [ChangeLog](changelog.md) document.
 
+---
+
+**NOTE**: As of **release 1.2** we have changed to Python 3 in the backend, and to support of Jupyter notebooks via [mknotebooks](https://pypi.org/project/mknotebooks/). This results in a much larger image size. If you don't need Jupyter, you'll still be safe with **release 1.1**
+
+---
+
 ## About
 
 Raspberry Valley is a maker community in Karlskrona, Sweden, sponsored by [Dynapac](https://dynapac.com/en). We run makerspaces every week, working with Raspberry Pis, Arduinos and other interesting hardware.
@@ -18,7 +24,7 @@ You can find our pages here: [Raspberry Valley](https://raspberry-valley.azurewe
 
 This documentation describes the creation and usage of the *MkDocs* image. On top we provide a few *PowerShell* scripts to simplify day-to-day authoring of content.
 
-> If you don't want to roll your own, but start using the image, jump to the section **Pulling the image from Dockerhub** below.
+> If you don't want to roll your own, but start using the image, jump to the section **Pulling the image from Dockerhub** below. We do recommend to be careful about third party images and to validate the image before installing.
 
 To learn more about setting up your project in *MkDocs* and working with the tool, see the [MkDocs Getting Started](http://www.mkdocs.org/#getting-started) manual.
 

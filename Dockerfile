@@ -8,20 +8,27 @@
 # * Docker hub: hub.docker.com/r/raspberryvalley/
 # * Follow on Twitter: https://twitter.com/RaspberryValley
 
-FROM alpine:3.10
+FROM alpine:3.11
 
 LABEL maintainer = "raspberryvalley@outlook.com"
 
 VOLUME  /mysite
 WORKDIR /mysite
 
-RUN apk add --no-cache python && \
-    python -m ensurepip && \
-    rm -r /usr/lib/python*/ensurepip && \
-    pip install --upgrade pip setuptools && \
-    rm -r /root/.cache
+# To avoid Python printing issues (See: https://github.com/Docker-Hub-frolvlad/docker-alpine-python3/pull/13)
+ENV PYTHONUNBUFFERED=1
 
-RUN pip install --no-cache-dir mkdocs pymdown-extensions mkdocs-material markdown-include pygments
+RUN apk add --no-cache python3 && \
+    if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
+    python3 -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip3 install --no-cache --upgrade pip setuptools wheel && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+    apk add --no-cache python3-dev && \
+    apk add --no-cache libc-dev linux-headers zeromq-dev gcc g++
+
+RUN pip install --no-cache-dir mkdocs pymdown-extensions mkdocs-material markdown-include cython nbconvert
+RUN pip install --no-cache-dir mknotebooks
 
 EXPOSE 8000
 

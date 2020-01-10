@@ -2,6 +2,14 @@
 
 This is the change log of our mkdocs image.
 
+## Releaase 1.2.0
+
+As of this version, we include [mknotebooks](https://pypi.org/project/mknotebooks/)
+
+* based on alpine 3.11
+* Python, pip set to Python 3
+* Due to *mknotebooks* requirements (on Python 3), the Dockerfile is completely restructured
+
 ## Release 1.1.0
 
 * based on alpine 3.10
