@@ -3,13 +3,13 @@
 Write-Host 
 "Build mkdocs site (from current directory)
 ===========================================
-This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.2.0)
+This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.0)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
-Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
+Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.2.0 build"
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.0 build"
 Write-Output $command
 iex $command

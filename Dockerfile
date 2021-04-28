@@ -8,7 +8,7 @@
 # * Docker hub: hub.docker.com/r/raspberryvalley/
 # * Follow on Twitter: https://twitter.com/RaspberryValley
 
-FROM alpine:3.11
+FROM alpine:3.13
 
 LABEL maintainer = "raspberryvalley@outlook.com"
 

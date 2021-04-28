@@ -58,14 +58,14 @@ We can push our image to [Docker Hub](https://hub.docker.com). We assume here yo
 First, let's 'tag' the image. Basically give it a 'label' which identifies a version of the system, target platform etc.
 
 ```bash
-docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.1.0
+docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.3.0
 ```
 
 Let us now push the docker image to [Docker Hub](https://hub.docker.com) (you need to login first)
 
 ```bash
 docker login
-docker push raspberryvalley/mkdocs:1.1.0
+docker push raspberryvalley/mkdocs:1.3.0
 ```
 
 You should see something similar to this:
@@ -83,7 +83,7 @@ And, on your Docker repository, you can see the image for re-use. Don't forget t
 Now we have sorted out everything, we have our brand new image on [Docker Hub](https://hub.docker.com). If you want to skip all the above, you can simply use our image to get started. Time to Pull the image.
 
 ```bash
-docker pull raspberryvalley/mkdocs:1.1.0
+docker pull raspberryvalley/mkdocs:1.3.0
 ```
 
 After a bit of downloading, you will be ready to create your own sites.
@@ -93,7 +93,7 @@ After a bit of downloading, you will be ready to create your own sites.
 You might need to start a new project using the MkDocs inbuilt features. It really is trivial and not always needed. But just in case, this is how you start one in the current directory.
 
 ```bash
-docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.1.0 new .
+docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.0 new .
 ```
 
 ## Serving an MkDocs project
@@ -101,7 +101,7 @@ docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.1.0 new .
 The current project directory will be served and can be tested in your browser
 
 ```bash
-docker run -it -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.1.0 serve -a 0.0.0.0:8000
+docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.0 serve -a 0.0.0.0:8000
 ```
 
 ## Building an MkDocs project
@@ -109,7 +109,7 @@ docker run -it -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.1.0 serve
 To generate a static site using the docker image, run
 
 ```bash
-docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.1.0 build
+docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.0 build
 ```
 
 **Notes**:
@@ -118,24 +118,24 @@ docker run -it -v $(pwd):/mysite raspberryvalley/mkdocs:1.1.0 build
 * **$(pwd)** expands the current directory. There are issues in Windows doing this. In such a case, expand to the full path in the command-line. It can be of interest, that if you use this expansion inside a PowerShell script, it will work.
 
 ```bash
-docker run -it -v c:\somedirectory\somesite:/mysite raspberryvalley/mkdocs:1.1.0 build
+docker run -it --rm -v c:\somedirectory\somesite:/mysite raspberryvalley/mkdocs:1.3.0 build
 ```
 
 or
 
 ```bash
-docker run -it -v /c/somedirectory/somesite:/mysite raspberryvalley/mkdocs:1.1.0 build
+docker run -it --rm -v /c/somedirectory/somesite:/mysite raspberryvalley/mkdocs:1.3.0 build
 ```
 
 * It's a good idea to remove the container immediately after it was used. Use the switch **--rm** to achieve this
 
 ## Powershell Scripts
 
-It is tedious to always write the full docker command on the command line. Now I do not recommend to use the below scripts immediately (there's no better learning than getting the manual effort into your bloodstream), but once you are convinced you know how things work, it's time to start working with PowerShell Scripts.
+It is tedious to always write the full docker commands on the command line. Now I do not recommend to use the below scripts immediately (there's no better learning than getting the manual effort into your bloodstream), but once you are convinced you know how things work, it's time to start working with our PowerShell Scripts.
 
-Just copy them from our **ps-scripts** directory somewhere onto your path, or simply copy-paste the scripts from below.
+Just copy the scripts from our **ps-scripts** directory somewhere onto your path, or simply copy-paste the scripts from below.
 
-## Creating a new website
+### Creating a new website
 
 To create a new website in mkdocs, simply use the script below. The name in the scripts directory is **mkdocsnew.ps1**. Note this scripts creates a new site in the current directory of your powershell console by utilizing our mkdocs image. The mkdocs parameter 'sitename' is ignored.
 
@@ -145,11 +145,11 @@ To create a new website in mkdocs, simply use the script below. The name in the 
 Write-Host
 "Create new mkdocs site
 =======================
-This script creates a new mkdocs site using the raspberryvalley/mkdocs image (version 1.1.0)
+This script creates a new mkdocs site using the raspberryvalley/mkdocs image (version 1.3.0)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
-Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
+Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
 # docker run -it -v $(pwd):/mysite mkdocs new .
@@ -162,7 +162,7 @@ Once you run the script on a directory, you can see something similar to the bel
 
 ![powershell script mkdocsnew](img/script-mkdocsnew.jpg)
 
-## Serve existing mkdocs site
+### Serve existing mkdocs site
 
 To serve an existing site you your local machine, yuu can use the powershell script **mkdocsserve.ps1**. Navigate to the directory where your site is (in powershell), then simply run the script (grab it from our repository or use the code below). If the script is on your path, you're in business.
 
@@ -172,16 +172,16 @@ To serve an existing site you your local machine, yuu can use the powershell scr
 Write-Host
 "Serve mkdocs site (from current directory)
 ===========================================
-This script serves an mkdocs site using the raspberryvalley/mkdocs image (version 1.1.0)
+This script serves an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.0)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
-Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
+Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
 # docker run -it --rm -v $(pwd):/mysite -p 8000:8000 mkdocs serve -a 0.0.0.0:8000
 
-$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.1.0 serve -a 0.0.0.0:8000"
+$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.0 serve -a 0.0.0.0:8000"
 Write-Output $command
 iex $command
 ```
@@ -190,7 +190,7 @@ Your output in the console can be similar to the below
 
 ![powershell script mkdocsserve](img/script-mkdocsserve.jpg)
 
-## Build existing mkdocs site
+### Build existing mkdocs site
 
 Time to build an existing mkdocs site. You can use our script **mkdocsbuild.ps1** or simply copy the script below. Navigate to the directory with your mkdocs source and invoke the script.
 
@@ -200,14 +200,14 @@ Time to build an existing mkdocs site. You can use our script **mkdocsbuild.ps1*
 Write-Host
 "Build mkdocs site (from current directory)
 ===========================================
-This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.1.0)
+This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.0)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
-Bitbucket  : https://bitbucket.org/dynapac/docker-mkdocs
+Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.1.0 build"
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.0 build"
 Write-Output $command
 iex $command
 ```
@@ -215,6 +215,17 @@ iex $command
 The output is as follows.
 
 ![powershell script mkdocsbuild](img/script-mkdocsbuild.jpg)
+
+
+### Run all actions from one script
+
+If you prefer, you can use our script **docker-mkdocs.ps1**. This combines all the 3 above mentioned scripts as one, and can be used as follows.
+
+```bash
+docker-mkdocs.ps1 [new|serve|build]
+```
+
+Same thing, one script file with options.
 
 ## Known Issues
 
