@@ -2,6 +2,10 @@
 
 This is the change log of our mkdocs image.
 
+## Release 1.3.1
+
+* updated to alpine 3.18.2
+
 ## Release 1.3.0
 
 * based on alpine 3.13

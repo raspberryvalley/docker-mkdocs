@@ -6,9 +6,8 @@
 # * Knowledge base: https://raspberry-valley.azurewebsites.net
 # * Github pages: https://github.com/raspberryvalley
 # * Docker hub: hub.docker.com/r/raspberryvalley/
-# * Follow on Twitter: https://twitter.com/RaspberryValley
 
-FROM alpine:3.13
+FROM alpine:3.18.2
 
 LABEL maintainer = "raspberryvalley@outlook.com"
 
