@@ -60,14 +60,14 @@ We can push our image to [Docker Hub](https://hub.docker.com). We assume here yo
 First, let's 'tag' the image. Basically give it a 'label' which identifies a version of the system, target platform etc.
 
 ```bash
-docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.3.1
+docker tag raspberryvalley/mkdocs raspberryvalley/mkdocs:1.3.2
 ```
 
 Let us now push the docker image to [Docker Hub](https://hub.docker.com) (you need to login first)
 
 ```bash
 docker login
-docker push raspberryvalley/mkdocs:1.3.1
+docker push raspberryvalley/mkdocs:1.3.2
 ```
 
 You should see something similar to this:
@@ -85,7 +85,7 @@ And, on your Docker repository, you can see the image for re-use. Don't forget t
 Now we have sorted out everything, we have our brand new image on [Docker Hub](https://hub.docker.com). If you want to skip all the above, you can simply use our image to get started. Time to Pull the image.
 
 ```bash
-docker pull raspberryvalley/mkdocs:1.3.1
+docker pull raspberryvalley/mkdocs:1.3.2
 ```
 
 After a bit of downloading, you will be ready to create your own sites.
@@ -95,7 +95,7 @@ After a bit of downloading, you will be ready to create your own sites.
 You might need to start a new project using the MkDocs inbuilt features. It really is trivial and not always needed. But just in case, this is how you start one in the current directory.
 
 ```bash
-docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 new .
+docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.2 new .
 ```
 
 ## Serving an MkDocs project
@@ -103,7 +103,7 @@ docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 new .
 The current project directory will be served and can be tested in your browser
 
 ```bash
-docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.1 serve -a 0.0.0.0:8000
+docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.2 serve -a 0.0.0.0:8000
 ```
 
 ## Building an MkDocs project
@@ -111,7 +111,7 @@ docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.1 
 To generate a static site using the docker image, run
 
 ```bash
-docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 build
+docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.2 build
 ```
 
 **Notes**:
@@ -120,13 +120,13 @@ docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 build
 * **$(pwd)** expands the current directory. There are issues in Windows doing this. In such a case, expand to the full path in the command-line. It can be of interest, that if you use this expansion inside a PowerShell script, it will work.
 
 ```bash
-docker run -it --rm -v c:\somedirectory\somesite:/mysite raspberryvalley/mkdocs:1.3.1 build
+docker run -it --rm -v c:\somedirectory\somesite:/mysite raspberryvalley/mkdocs:1.3.2 build
 ```
 
 or
 
 ```bash
-docker run -it --rm -v /c/somedirectory/somesite:/mysite raspberryvalley/mkdocs:1.3.1 build
+docker run -it --rm -v /c/somedirectory/somesite:/mysite raspberryvalley/mkdocs:1.3.2 build
 ```
 
 * It's a good idea to remove the container immediately after it was used. Use the switch **--rm** to achieve this
@@ -147,7 +147,7 @@ To create a new website in mkdocs, simply use the script below. The name in the 
 Write-Host
 "Create new mkdocs site
 =======================
-This script creates a new mkdocs site using the raspberryvalley/mkdocs image (version 1.3.1)
+This script creates a new mkdocs site using the raspberryvalley/mkdocs image (version 1.3.2)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
@@ -155,7 +155,7 @@ Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
 # docker run -it -v $(pwd):/mysite mkdocs new .
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 new ."
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.2 new ."
 Write-Output $command
 iex $command
 ```
@@ -174,7 +174,7 @@ To serve an existing site you your local machine, yuu can use the powershell scr
 Write-Host
 "Serve mkdocs site (from current directory)
 ===========================================
-This script serves an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.1)
+This script serves an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.2)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
@@ -183,7 +183,7 @@ Github     : https://github.com/raspberryvalley/docker-mkdocs/
 
 # docker run -it --rm -v $(pwd):/mysite -p 8000:8000 mkdocs serve -a 0.0.0.0:8000
 
-$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.1 serve -a 0.0.0.0:8000"
+$command = "docker run -it --rm -v $(pwd):/mysite -p 8000:8000 raspberryvalley/mkdocs:1.3.2 serve -a 0.0.0.0:8000"
 Write-Output $command
 iex $command
 ```
@@ -202,14 +202,14 @@ Time to build an existing mkdocs site. You can use our script **mkdocsbuild.ps1*
 Write-Host
 "Build mkdocs site (from current directory)
 ===========================================
-This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.1)
+This script builds an mkdocs site using the raspberryvalley/mkdocs image (version 1.3.2)
 in the current directory.
 
 Docker Hub : https://hub.docker.com/r/raspberryvalley/mkdocs/
 Github     : https://github.com/raspberryvalley/docker-mkdocs/
 "
 
-$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.1 build"
+$command = "docker run -it --rm -v $(pwd):/mysite raspberryvalley/mkdocs:1.3.2 build"
 Write-Output $command
 iex $command
 ```
@@ -228,6 +228,12 @@ docker-mkdocs.ps1 [new|serve|build]
 ```
 
 Same thing, one script file with options.
+
+We have also attached a [podman](https://podman.io/) file, if you prefer to use podman on your system. Usage is the same:
+
+```bash
+podman-mkdocs.ps1 [new|serve|build]
+```
 
 ## Known Issues
 

@@ -2,6 +2,11 @@
 
 This is the change log of our mkdocs image.
 
+## Release 1.3.2
+
+* updated to alpine 3.18.3
+* added podman powershell script
+
 ## Release 1.3.1
 
 * updated to alpine 3.18.2

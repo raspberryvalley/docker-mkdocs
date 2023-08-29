@@ -7,7 +7,7 @@
 # * Github pages: https://github.com/raspberryvalley
 # * Docker hub: hub.docker.com/r/raspberryvalley/
 
-FROM alpine:3.18.2
+FROM alpine:3.18.3
 
 LABEL maintainer = "raspberryvalley@outlook.com"
 
